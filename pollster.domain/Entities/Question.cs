@@ -12,9 +12,9 @@ namespace pollster.domain.Entities
         }
         public int QuestionId { get; set; }
         public int SurveyId { get; set; }
-        public sring QuestionText { get; set; }
-        public boolean IsRequired { get; set; }
-        public boolean IsActive { get; set; }
+        public string QuestionText { get; set; }
+        public bool IsRequired { get; set; }
+        public bool IsActive { get; set; }
         public int SortOrder { get; set; }
         public QuestionResponseType QuestionResponseType { get; set; }
 
