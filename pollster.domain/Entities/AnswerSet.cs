@@ -16,7 +16,7 @@ namespace pollster.domain.Entities
         public DateTime StartedAt { get; set; }
         public DateTime FinishedAt { get; set; }
 
-        public ICollection<Answer> Answers { get; set; }
+        public ICollection<Answer> Answers { get; private set; }
 
     }
 }

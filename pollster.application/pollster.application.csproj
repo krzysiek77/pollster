@@ -12,10 +12,9 @@
     <PackageReference Include="MediatR" Version="5.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <!-- <ProjectReference Include="..\pollster.Persistence\pollster.Persistence.csproj" /> -->
-  
+  <ItemGroup>  
     <ProjectReference Include="..\pollster.domain\pollster.domain.csproj" />
+    <ProjectReference Include="..\pollster.persistence\pollster.persistence.csproj" />
   </ItemGroup>
 
 </Project>

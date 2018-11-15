@@ -17,6 +17,6 @@ namespace pollster.domain.Entities
         public UserType UserType { get; set; }
         
         public ICollection<Survey> Surveys { get; private set; }
-        public ICollection<AnswerSet> AnswerSets { get; set; }
+        public ICollection<AnswerSet> AnswerSets { get; private set; }
     }
 }

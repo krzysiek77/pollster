@@ -14,6 +14,6 @@ namespace pollster.domain.Entities
         public bool IsActive { get; set; }
         public int SortOrder { get; set; }
 
-        public ICollection<Answer> Answers { get; set; }
+        public ICollection<Answer> Answers { get; private set; }
     }
 }
