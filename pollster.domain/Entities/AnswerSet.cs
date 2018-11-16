@@ -12,10 +12,11 @@ namespace pollster.domain.Entities
         }
         public int AnswerSetId { get; set; }
         public int SurveyId { get; set; }
-        public int UserId { get; set; }
         public DateTime StartedAt { get; set; }
         public DateTime FinishedAt { get; set; }
 
+        public Survey Survey { get; set; }
+        // public User Creator { get; set; }
         public ICollection<Answer> Answers { get; private set; }
 
     }

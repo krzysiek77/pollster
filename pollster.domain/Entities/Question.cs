@@ -18,6 +18,7 @@ namespace pollster.domain.Entities
         public int SortOrder { get; set; }
         public QuestionResponseType QuestionResponseType { get; set; }
 
+        public Survey Survey { get; set; }
         public ICollection<PossibleAnswer> PossibleAnswers { get; private set; }
 
     }

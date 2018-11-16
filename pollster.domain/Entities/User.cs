@@ -8,15 +8,18 @@ namespace pollster.domain.Entities
     {
         public User()
         {
-            Surveys = new HashSet<Survey>();
-            AnswerSets = new HashSet<AnswerSet>();
+            // Surveys = new HashSet<Survey>();
+            // AnswerSets = new HashSet<AnswerSet>();
         }
         public int UserId { get; set; }
+        public int ClientId { get; set; }
         public string UserEmail { get; set; }
         public string UserName { get; set; }
         public UserType UserType { get; set; }
+        public bool IsActive { get; set; }
         
-        public ICollection<Survey> Surveys { get; private set; }
-        public ICollection<AnswerSet> AnswerSets { get; private set; }
+        public Client Client { get; set; }
+        // public ICollection<Survey> Surveys { get; private set; }
+        // public ICollection<AnswerSet> AnswerSets { get; private set; }
     }
 }

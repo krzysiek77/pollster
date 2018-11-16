@@ -11,8 +11,11 @@ namespace pollster.domain.Entities
             AnswerSets = new HashSet<AnswerSet>();
         }
         public int SurveyId { get; set; }
+        public int ClientId { get; set; }
         public string SurveyName { get; set; }
+        public bool IsActive { get; set; }
 
+        public Client Client { get; set; }
         public ICollection<Question> Questions { get; private set; }
         public ICollection<AnswerSet> AnswerSets { get; private set; }
     }

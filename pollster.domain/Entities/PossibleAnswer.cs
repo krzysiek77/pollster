@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace pollster.domain.Entities
 {
-    public class PossibleAnswer
+    public class PossibleAnswer : Audit
     {
         public PossibleAnswer()
         {
@@ -14,6 +14,7 @@ namespace pollster.domain.Entities
         public bool IsActive { get; set; }
         public int SortOrder { get; set; }
 
+        public Question Question { get; set; }
         public ICollection<Answer> Answers { get; private set; }
     }
 }

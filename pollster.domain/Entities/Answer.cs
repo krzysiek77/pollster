@@ -6,5 +6,8 @@ namespace pollster.domain.Entities
         public int AnswerSetId { get; set; }
         public int PossibleAnswerId { get; set; }
         public string AnswerText { get; set; }
+
+        public AnswerSet AnswerSet { get; set; }
+        public PossibleAnswer PossibleAnswer { get; set; }
     }
 }
