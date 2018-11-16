@@ -29,7 +29,7 @@ namespace pollster.persistence.Configurations
 
             builder.Property(e => e.CreatedAt)
                 .IsRequired()
-                .HasDefaultValue(DateTime.UtcNow);
+                .HasDefaultValue(DateTime.UtcNow);           
         }
     }
 }

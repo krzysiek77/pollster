@@ -34,17 +34,13 @@ namespace pollster.persistence.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2018, 11, 16, 15, 23, 16, 230, DateTimeKind.Utc).AddTicks(9447));
-
-                    b.Property<DateTime>("DeletedAt");
+                        .HasDefaultValue(new DateTime(2018, 11, 16, 16, 38, 17, 562, DateTimeKind.Utc).AddTicks(4062));
 
                     b.Property<bool>("IsExisting")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValue(true);
 
                     b.Property<int>("PossibleAnswerId");
-
-                    b.Property<DateTime>("UpdatedAt");
 
                     b.HasKey("AnswerId");
 
@@ -64,9 +60,7 @@ namespace pollster.persistence.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2018, 11, 16, 15, 23, 16, 234, DateTimeKind.Utc).AddTicks(9450));
-
-                    b.Property<DateTime>("DeletedAt");
+                        .HasDefaultValue(new DateTime(2018, 11, 16, 16, 38, 17, 567, DateTimeKind.Utc).AddTicks(4064));
 
                     b.Property<DateTime>("FinishedAt");
 
@@ -78,11 +72,13 @@ namespace pollster.persistence.Migrations
 
                     b.Property<int>("SurveyId");
 
-                    b.Property<DateTime>("UpdatedAt");
+                    b.Property<int>("UserId");
 
                     b.HasKey("AnswerSetId");
 
                     b.HasIndex("SurveyId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("AnswerSets");
                 });
@@ -101,9 +97,7 @@ namespace pollster.persistence.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2018, 11, 16, 15, 23, 16, 236, DateTimeKind.Utc).AddTicks(9451));
-
-                    b.Property<DateTime>("DeletedAt");
+                        .HasDefaultValue(new DateTime(2018, 11, 16, 16, 38, 17, 569, DateTimeKind.Utc).AddTicks(4066));
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
@@ -112,8 +106,6 @@ namespace pollster.persistence.Migrations
                     b.Property<bool>("IsExisting")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValue(true);
-
-                    b.Property<DateTime>("UpdatedAt");
 
                     b.HasKey("ClientId");
 
@@ -129,9 +121,7 @@ namespace pollster.persistence.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2018, 11, 16, 15, 23, 16, 239, DateTimeKind.Utc).AddTicks(9452));
-
-                    b.Property<DateTime>("DeletedAt");
+                        .HasDefaultValue(new DateTime(2018, 11, 16, 16, 38, 17, 572, DateTimeKind.Utc).AddTicks(4067));
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
@@ -149,8 +139,6 @@ namespace pollster.persistence.Migrations
 
                     b.Property<int>("SortOrder");
 
-                    b.Property<DateTime>("UpdatedAt");
-
                     b.HasKey("PossibleAnswerId");
 
                     b.HasIndex("QuestionId");
@@ -167,9 +155,7 @@ namespace pollster.persistence.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2018, 11, 16, 15, 23, 16, 244, DateTimeKind.Utc).AddTicks(9455));
-
-                    b.Property<DateTime>("DeletedAt");
+                        .HasDefaultValue(new DateTime(2018, 11, 16, 16, 38, 17, 576, DateTimeKind.Utc).AddTicks(4070));
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
@@ -191,8 +177,6 @@ namespace pollster.persistence.Migrations
 
                     b.Property<int>("SurveyId");
 
-                    b.Property<DateTime>("UpdatedAt");
-
                     b.HasKey("QuestionId");
 
                     b.HasIndex("SurveyId");
@@ -207,13 +191,9 @@ namespace pollster.persistence.Migrations
                         .HasColumnName("SurveyId")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ClientId");
-
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2018, 11, 16, 15, 23, 16, 247, DateTimeKind.Utc).AddTicks(9457));
-
-                    b.Property<DateTime>("DeletedAt");
+                        .HasDefaultValue(new DateTime(2018, 11, 16, 16, 38, 17, 580, DateTimeKind.Utc).AddTicks(4072));
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
@@ -227,11 +207,11 @@ namespace pollster.persistence.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.Property<DateTime>("UpdatedAt");
+                    b.Property<int>("UserId");
 
                     b.HasKey("SurveyId");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Surveys");
                 });
@@ -248,9 +228,7 @@ namespace pollster.persistence.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2018, 11, 16, 15, 23, 16, 263, DateTimeKind.Utc).AddTicks(9466));
-
-                    b.Property<DateTime>("DeletedAt");
+                        .HasDefaultValue(new DateTime(2018, 11, 16, 16, 38, 17, 596, DateTimeKind.Utc).AddTicks(4081));
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
@@ -259,8 +237,6 @@ namespace pollster.persistence.Migrations
                     b.Property<bool>("IsExisting")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValue(true);
-
-                    b.Property<DateTime>("UpdatedAt");
 
                     b.Property<string>("UserEmail")
                         .IsRequired()
@@ -301,6 +277,12 @@ namespace pollster.persistence.Migrations
                         .WithMany("AnswerSets")
                         .HasForeignKey("SurveyId")
                         .HasConstraintName("FK_Answer_Sets_Surveys");
+
+                    b.HasOne("pollster.domain.Entities.User", "User")
+                        .WithMany("AnswerSets")
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK_Answer_Sets_Users")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("pollster.domain.Entities.PossibleAnswer", b =>
@@ -321,10 +303,10 @@ namespace pollster.persistence.Migrations
 
             modelBuilder.Entity("pollster.domain.Entities.Survey", b =>
                 {
-                    b.HasOne("pollster.domain.Entities.Client", "Client")
+                    b.HasOne("pollster.domain.Entities.User", "User")
                         .WithMany("Surveys")
-                        .HasForeignKey("ClientId")
-                        .HasConstraintName("FK_Surveys_Clients");
+                        .HasForeignKey("UserId")
+                        .HasConstraintName("FK_Surveys_Users");
                 });
 
             modelBuilder.Entity("pollster.domain.Entities.User", b =>

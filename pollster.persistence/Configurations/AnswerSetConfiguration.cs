@@ -28,10 +28,10 @@ namespace pollster.persistence.Configurations
                 .IsRequired()
                 .OnDelete(DeleteBehavior.ClientSetNull);;
 
-            // builder.HasOne(e => e.Creator)
-            //     .WithMany(f => f.AnswerSets)
-            //     .HasForeignKey(e => e.CreatedById)
-            //     .HasConstraintName("FK_Answer_Sets_Users");
+            builder.HasOne(e => e.User)
+                .WithMany(f => f.AnswerSets)
+                .HasForeignKey(e => e.UserId)
+                .HasConstraintName("FK_Answer_Sets_Users");
 
             // audit
             builder.Property(e => e.IsExisting)

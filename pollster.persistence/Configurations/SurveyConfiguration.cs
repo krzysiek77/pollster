@@ -22,12 +22,12 @@ namespace pollster.persistence.Configurations
             builder.Property(e => e.IsActive)
                 .HasDefaultValue(true);
 
-            builder.HasOne(e => e.Client)
+            builder.HasOne(e => e.User)
                 .WithMany(f => f.Surveys)
-                .HasForeignKey(e => e.ClientId)
-                .HasConstraintName("FK_Surveys_Clients")
+                .HasForeignKey(e => e.UserId)
+                .HasConstraintName("FK_Surveys_Users")
                 .IsRequired()
-                .OnDelete(DeleteBehavior.ClientSetNull);;
+                .OnDelete(DeleteBehavior.ClientSetNull);
 
             // audit
             builder.Property(e => e.IsExisting)

@@ -12,9 +12,7 @@ namespace pollster.persistence.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 15, 23, 16, 236, DateTimeKind.Utc).AddTicks(9451)),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 16, 38, 17, 569, DateTimeKind.Utc).AddTicks(4066)),
                     IsExisting = table.Column<bool>(nullable: false, defaultValue: true),
                     ClientId = table.Column<int>(maxLength: 6, nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -27,37 +25,10 @@ namespace pollster.persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Surveys",
-                columns: table => new
-                {
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 15, 23, 16, 247, DateTimeKind.Utc).AddTicks(9457)),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: false),
-                    IsExisting = table.Column<bool>(nullable: false, defaultValue: true),
-                    SurveyId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ClientId = table.Column<int>(nullable: false),
-                    SurveyName = table.Column<string>(maxLength: 100, nullable: false),
-                    IsActive = table.Column<bool>(nullable: false, defaultValue: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Surveys", x => x.SurveyId);
-                    table.ForeignKey(
-                        name: "FK_Surveys_Clients",
-                        column: x => x.ClientId,
-                        principalTable: "Clients",
-                        principalColumn: "ClientId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 15, 23, 16, 263, DateTimeKind.Utc).AddTicks(9466)),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 16, 38, 17, 596, DateTimeKind.Utc).AddTicks(4081)),
                     IsExisting = table.Column<bool>(nullable: false, defaultValue: true),
                     UserId = table.Column<int>(maxLength: 6, nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -79,16 +50,38 @@ namespace pollster.persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Surveys",
+                columns: table => new
+                {
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 16, 38, 17, 580, DateTimeKind.Utc).AddTicks(4072)),
+                    IsExisting = table.Column<bool>(nullable: false, defaultValue: true),
+                    SurveyId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<int>(nullable: false),
+                    SurveyName = table.Column<string>(maxLength: 100, nullable: false),
+                    IsActive = table.Column<bool>(nullable: false, defaultValue: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Surveys", x => x.SurveyId);
+                    table.ForeignKey(
+                        name: "FK_Surveys_Users",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AnswerSets",
                 columns: table => new
                 {
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 15, 23, 16, 234, DateTimeKind.Utc).AddTicks(9450)),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 16, 38, 17, 567, DateTimeKind.Utc).AddTicks(4064)),
                     IsExisting = table.Column<bool>(nullable: false, defaultValue: true),
                     AnswerSetId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SurveyId = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
                     StartedAt = table.Column<DateTime>(nullable: false),
                     FinishedAt = table.Column<DateTime>(nullable: false)
                 },
@@ -101,15 +94,19 @@ namespace pollster.persistence.Migrations
                         principalTable: "Surveys",
                         principalColumn: "SurveyId",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Answer_Sets_Users",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Questions",
                 columns: table => new
                 {
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 15, 23, 16, 244, DateTimeKind.Utc).AddTicks(9455)),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 16, 38, 17, 576, DateTimeKind.Utc).AddTicks(4070)),
                     IsExisting = table.Column<bool>(nullable: false, defaultValue: true),
                     QuestionId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -135,9 +132,7 @@ namespace pollster.persistence.Migrations
                 name: "PossibleAnswers",
                 columns: table => new
                 {
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 15, 23, 16, 239, DateTimeKind.Utc).AddTicks(9452)),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 16, 38, 17, 572, DateTimeKind.Utc).AddTicks(4067)),
                     IsExisting = table.Column<bool>(nullable: false, defaultValue: true),
                     PossibleAnswerId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -161,9 +156,7 @@ namespace pollster.persistence.Migrations
                 name: "Answers",
                 columns: table => new
                 {
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 15, 23, 16, 230, DateTimeKind.Utc).AddTicks(9447)),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    DeletedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2018, 11, 16, 16, 38, 17, 562, DateTimeKind.Utc).AddTicks(4062)),
                     IsExisting = table.Column<bool>(nullable: false, defaultValue: true),
                     AnswerId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
@@ -204,6 +197,11 @@ namespace pollster.persistence.Migrations
                 column: "SurveyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AnswerSets_UserId",
+                table: "AnswerSets",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PossibleAnswers_QuestionId",
                 table: "PossibleAnswers",
                 column: "QuestionId");
@@ -214,9 +212,9 @@ namespace pollster.persistence.Migrations
                 column: "SurveyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Surveys_ClientId",
+                name: "IX_Surveys_UserId",
                 table: "Surveys",
-                column: "ClientId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_ClientId",
@@ -236,9 +234,6 @@ namespace pollster.persistence.Migrations
                 name: "Answers");
 
             migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.DropTable(
                 name: "AnswerSets");
 
             migrationBuilder.DropTable(
@@ -249,6 +244,9 @@ namespace pollster.persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Surveys");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Clients");

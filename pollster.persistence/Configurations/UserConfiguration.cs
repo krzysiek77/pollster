@@ -35,8 +35,8 @@ namespace pollster.persistence.Configurations
                 .HasForeignKey(e => e.ClientId)
                 .HasConstraintName("FK_Users_Clients")
                 .IsRequired()
-                .OnDelete(DeleteBehavior.ClientSetNull);;
-
+                .OnDelete(DeleteBehavior.ClientSetNull);
+            
             // audit
             builder.Property(e => e.IsExisting)
                 .HasDefaultValue(true);
